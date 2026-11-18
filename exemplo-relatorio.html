@@ -3,157 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <title>Relatório de Prontidão — Exemplo</title>
 <style>
-  :root { --bordo:#7a1f2b; --cinza:#555; --claro:#f6f1f2; --ok:#2e7d4f; --amarelo:#b7791f; --laranja:#c05621; --verm:#b83232; }
+  :root {
+    --a1:#123a73; --a2:#1e4f9c; --a3:#4a82d4; --a4:#8db6ec; --a5:#c9dcf5; --a6:#eaf1fb;
+    --texto:#1b2433; --suave:#55627a; --linha:#d6e0ef;
+  }
   * { box-sizing: border-box; }
-  body { font-family: Segoe UI, Arial, sans-serif; color:#222; margin:0; background:#eee; }
-  .pagina { width:210mm; min-height:297mm; margin:12px auto; background:#fff; padding:14mm 15mm; position:relative; }
-  .marca-dagua { position:absolute; top:6mm; right:15mm; font-size:11px; color:#fff; background:var(--verm); padding:3px 10px; border-radius:3px; letter-spacing:.5px; }
-  header { border-bottom:3px solid var(--bordo); padding-bottom:8px; margin-bottom:12px; }
-  header .esc { font-size:12px; color:var(--cinza); }
-  h1 { margin:2px 0 0; font-size:21px; color:var(--bordo); }
-  .sub { font-size:12px; color:var(--cinza); margin-top:4px; }
-  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--bordo); margin:16px 0 6px; border-bottom:1px solid #ddd; padding-bottom:3px; }
-  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
-  .card { background:var(--claro); border-radius:6px; padding:8px 10px; }
-  .card .n { font-size:21px; font-weight:700; color:var(--bordo); }
-  .card .l { font-size:11px; color:var(--cinza); }
-  .barra { display:flex; height:22px; border-radius:4px; overflow:hidden; margin:6px 0 4px; }
-  .barra div { color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; }
-  .leg { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:11px; color:var(--cinza); }
-  .leg i { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:4px; vertical-align:middle; }
-  table { width:100%; border-collapse:collapse; font-size:12px; }
-  th { text-align:left; background:var(--claro); padding:5px 7px; font-size:11px; }
-  td { padding:5px 7px; border-bottom:1px solid #eee; vertical-align:top; }
-  td.num { text-align:right; white-space:nowrap; }
-  .tag { font-size:10px; padding:1px 6px; border-radius:8px; color:#fff; white-space:nowrap; }
-  .nota { font-size:11px; color:var(--cinza); margin-top:4px; }
-  ol { margin:4px 0 0 18px; padding:0; font-size:12px; }
-  ol li { margin-bottom:4px; }
-  .rodape { position:absolute; left:15mm; right:15mm; bottom:10mm; font-size:9.5px; color:#777; border-top:1px solid #ddd; padding-top:6px; line-height:1.4; }
+  body { font-family: Segoe UI, Arial, sans-serif; color:var(--texto); margin:0; background:#e9eef6; }
   .nav-topo { max-width:210mm; margin:12px auto 0; padding:0 4px; font-size:13px; }
-  .nav-topo a { color:var(--bordo); font-weight:600; }
+  .nav-topo a { color:var(--a2); font-weight:600; }
+  .pagina { width:210mm; min-height:297mm; margin:12px auto; background:#fff; padding:13mm 14mm 22mm; position:relative; }
+  .selo { position:absolute; top:6mm; right:14mm; font-size:10.5px; color:#fff; background:var(--a1); padding:3px 10px; border-radius:3px; letter-spacing:.5px; }
+
+  header { background:linear-gradient(135deg,var(--a1),var(--a3)); color:#fff; border-radius:8px; padding:14px 16px; margin-bottom:12px; }
+  header .esc { font-size:11px; opacity:.85; }
+  header h1 { margin:2px 0 6px; font-size:20px; }
+  header .meta { display:flex; flex-wrap:wrap; gap:4px 16px; font-size:11.5px; opacity:.95; }
+  header .meta b { font-weight:600; opacity:.8; }
+
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.7px; color:var(--a2); margin:0 0 8px; }
+  .caixa { border:1px solid var(--linha); border-radius:8px; padding:11px 13px; }
+  .grade { display:grid; gap:10px; }
+  .g4 { grid-template-columns:repeat(4,1fr); }
+  .g2 { grid-template-columns:1fr 1fr; }
+  .mt { margin-top:10px; }
+
+  .kpi { background:var(--a6); border-radius:8px; padding:10px 12px; border-left:4px solid var(--a2); }
+  .kpi .n { font-size:24px; font-weight:700; color:var(--a1); line-height:1.1; }
+  .kpi .l { font-size:10.5px; color:var(--suave); margin-top:2px; }
+
+  /* rosca */
+  .rosca-wrap { display:flex; align-items:center; gap:14px; }
+  .rosca { width:150px; height:150px; flex:none; }
+  .rosca text { font-family:inherit; }
+  .leg { list-style:none; margin:0; padding:0; font-size:11.5px; width:100%; }
+  .leg li { display:flex; align-items:center; gap:7px; padding:4px 0; border-bottom:1px solid var(--a6); }
+  .leg li:last-child { border:0; }
+  .leg i { width:11px; height:11px; border-radius:3px; flex:none; }
+  .leg b { margin-left:auto; color:var(--a1); }
+
+  /* barras horizontais */
+  .hb { margin-bottom:9px; font-size:11.5px; }
+  .hb .rot { display:flex; justify-content:space-between; margin-bottom:3px; }
+  .hb .rot b { color:var(--a1); }
+  .hb .trilho { height:14px; background:var(--a6); border-radius:7px; overflow:hidden; }
+  .hb .fill { height:100%; border-radius:7px; }
+
+  /* colunas */
+  .cols { display:flex; align-items:flex-end; justify-content:space-around; height:120px; padding-top:6px; border-bottom:1px solid var(--linha); }
+  .col { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; width:46%; height:100%; }
+  .col .v { font-size:12px; font-weight:700; color:var(--a1); margin-bottom:3px; }
+  .col .b { width:100%; border-radius:5px 5px 0 0; }
+  .cols-rot { display:flex; justify-content:space-around; font-size:11px; color:var(--suave); margin-top:4px; }
+  .cols-rot span { width:46%; text-align:center; }
+
+  .var { text-align:center; margin-top:8px; font-size:11px; color:var(--suave); }
+  .var b { display:block; font-size:22px; color:var(--a1); }
+
+  .fonte { font-size:9.5px; color:var(--suave); margin-top:8px; line-height:1.4; }
+  .rodape { position:absolute; left:14mm; right:14mm; bottom:9mm; font-size:9.5px; color:#6b7890; border-top:1px solid var(--linha); padding-top:6px; line-height:1.4; }
+
+  /* página 2 */
   .pagina2 { min-height:auto; padding-bottom:22mm; }
-  .pagina2 h1 { font-size:19px; }
-  .acesso { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
-  .acesso > div { background:var(--claro); border-radius:6px; padding:10px 12px; font-size:12.5px; }
-  .acesso h3 { margin:0 0 6px; font-size:13px; color:var(--bordo); }
+  .acesso { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .acesso > div { border-radius:8px; padding:11px 13px; font-size:12px; }
+  .acesso h3 { margin:0 0 6px; font-size:13px; }
   .acesso ul { margin:0; padding-left:18px; }
-  .acesso li { margin-bottom:3px; }
-  .nao { border-left:4px solid var(--verm); }
-  .sim { border-left:4px solid var(--ok); }
-  @media (max-width:800px) { .acesso { grid-template-columns:1fr; } }
-  @media print { .nav-topo { display:none; } }
-  @media print { body { background:#fff; } .pagina { margin:0; box-shadow:none; } @page { size:A4; margin:0; } }
-  @media (max-width:800px) { .pagina { width:auto; padding:14px; } .cards { grid-template-columns:repeat(2,1fr); } .rodape { position:static; margin-top:16px; } }
+  .acesso li { margin-bottom:4px; }
+  .sim { background:var(--a6); border-left:4px solid var(--a2); } .sim h3 { color:var(--a2); }
+  .nao { background:#f1f3f7; border-left:4px solid var(--a1); } .nao h3 { color:var(--a1); }
+  .passos { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:6px; }
+  .passos div { background:var(--a6); border-radius:8px; padding:9px; font-size:11.5px; text-align:center; }
+  .passos b { display:block; font-size:18px; color:var(--a2); }
+
+  @media (max-width:800px) {
+    .pagina { width:auto; padding:14px 14px 20px; }
+    .g4 { grid-template-columns:repeat(2,1fr); } .g2, .acesso { grid-template-columns:1fr; }
+    .passos { grid-template-columns:1fr 1fr; }
+    .rodape { position:static; margin-top:14px; } .selo { position:static; display:inline-block; margin-bottom:8px; }
+    .rosca-wrap { flex-direction:column; align-items:stretch; } .rosca { align-self:center; }
+  }
+  @media print { .nav-topo { display:none; } body { background:#fff; } .pagina { margin:0; } @page { size:A4; margin:0; } }
 </style>
 </head>
 <body>
 <div class="nav-topo"><a href="index.html">← Voltar ao questionário</a></div>
+
 <div class="pagina">
-  <div class="marca-dagua">EXEMPLO — DADOS FICTÍCIOS</div>
+  <span class="selo">EXEMPLO · DADOS FICTÍCIOS</span>
   <header>
-    <div class="esc">[Nome do Escritório Contábil] · [logo do escritório]</div>
-    <h1>Diagnóstico de Prontidão para a Reforma Tributária</h1>
-    <div class="sub"><b>Cliente:</b> Mercadinho Exemplo Ltda (fictício) · <b>Regime:</b> Lucro Presumido · <b>UF:</b> RS · <b>Período analisado:</b> set–out/2026 · <b>Emissão:</b> 18/11/2026</div>
+    <div class="esc">[Nome do Escritório Contábil]</div>
+    <h1>Prontidão para a Reforma Tributária</h1>
+    <div class="meta">
+      <span><b>Cliente</b> Mercadinho Exemplo Ltda</span>
+      <span><b>Regime</b> Lucro Presumido</span>
+      <span><b>UF</b> RS</span>
+      <span><b>Período</b> set–out/2026</span>
+    </div>
   </header>
 
-  <h2>Visão geral</h2>
-  <div class="cards">
-    <div class="card"><div class="n">120</div><div class="l">notas fiscais analisadas</div></div>
-    <div class="card"><div class="n">412</div><div class="l">itens verificados</div></div>
-    <div class="card"><div class="n">87</div><div class="l">produtos diferentes</div></div>
-    <div class="card"><div class="n">52%</div><div class="l">itens com classificação conferida</div></div>
+  <div class="grade g4">
+    <div class="kpi"><div class="n">120</div><div class="l">notas analisadas</div></div>
+    <div class="kpi"><div class="n">412</div><div class="l">itens verificados</div></div>
+    <div class="kpi"><div class="n">87</div><div class="l">produtos diferentes</div></div>
+    <div class="kpi"><div class="n">52%</div><div class="l">itens conferidos</div></div>
   </div>
 
-  <h2>Situação da classificação dos itens</h2>
-  <div class="barra">
-    <div style="width:52%;background:var(--ok)">52%</div>
-    <div style="width:24%;background:var(--amarelo)">24%</div>
-    <div style="width:17%;background:var(--laranja)">17%</div>
-    <div style="width:7%;background:var(--verm)">7%</div>
+  <div class="grade g2 mt">
+    <div class="caixa">
+      <h2>Situação da classificação</h2>
+      <div class="rosca-wrap">
+        <svg class="rosca" viewBox="0 0 140 140" role="img" aria-label="Rosca: 52% conferido, 24% estimado, 17% pendente, 7% corrigir cadastro">
+          <g transform="rotate(-90 70 70)" fill="none" stroke-width="24">
+            <circle cx="70" cy="70" r="54" stroke="#123a73" stroke-dasharray="176.4 339.3" stroke-dashoffset="0"/>
+            <circle cx="70" cy="70" r="54" stroke="#4a82d4" stroke-dasharray="81.4 339.3" stroke-dashoffset="-176.4"/>
+            <circle cx="70" cy="70" r="54" stroke="#8db6ec" stroke-dasharray="57.7 339.3" stroke-dashoffset="-257.8"/>
+            <circle cx="70" cy="70" r="54" stroke="#c9dcf5" stroke-dasharray="23.8 339.3" stroke-dashoffset="-315.5"/>
+          </g>
+          <text x="70" y="68" text-anchor="middle" font-size="22" font-weight="700" fill="#123a73">412</text>
+          <text x="70" y="84" text-anchor="middle" font-size="9" fill="#55627a">itens</text>
+        </svg>
+        <ul class="leg">
+          <li><i style="background:#123a73"></i>Conferido<b>214</b></li>
+          <li><i style="background:#4a82d4"></i>Estimado, confirmar<b>98</b></li>
+          <li><i style="background:#8db6ec"></i>Pendente de decisão<b>71</b></li>
+          <li><i style="background:#c9dcf5"></i>Corrigir cadastro<b>29</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="caixa">
+      <h2>Pontos de atenção (itens)</h2>
+      <div class="hb"><div class="rot"><span>Várias classificações possíveis</span><b>71</b></div><div class="trilho"><div class="fill" style="width:100%;background:#4a82d4"></div></div></div>
+      <div class="hb"><div class="rot"><span>NCM não vinculada · REG-011</span><b>18</b></div><div class="trilho"><div class="fill" style="width:25.4%;background:#1e4f9c"></div></div></div>
+      <div class="hb"><div class="rot"><span>NCM não encontrada · REG-002</span><b>11</b></div><div class="trilho"><div class="fill" style="width:15.5%;background:#123a73"></div></div></div>
+      <div class="fonte">Códigos REG vêm do motor de cálculo e indicam o tipo de inconsistência no cadastro.</div>
+    </div>
   </div>
-  <div class="leg">
-    <span><i style="background:var(--ok)"></i>Conferido (214)</span>
-    <span><i style="background:var(--amarelo)"></i>Estimado, confirmar (98)</span>
-    <span><i style="background:var(--laranja)"></i>Pendente de decisão (71)</span>
-    <span><i style="background:var(--verm)"></i>Corrigir cadastro (29)</span>
+
+  <div class="grade g2 mt">
+    <div class="caixa">
+      <h2>Evolução da conferência</h2>
+      <div class="cols">
+        <div class="col"><div class="v">48%</div><div class="b" style="height:48%;background:#8db6ec"></div></div>
+        <div class="col"><div class="v">56%</div><div class="b" style="height:56%;background:#1e4f9c"></div></div>
+      </div>
+      <div class="cols-rot"><span>Setembro</span><span>Outubro</span></div>
+      <div class="fonte">% de itens com classificação conferida em cada mês.</div>
+    </div>
+
+    <div class="caixa">
+      <h2>Carga estimada (simulação)</h2>
+      <div class="hb"><div class="rot"><span>Atual (ICMS + PIS + COFINS)</span><b>17,1%</b></div><div class="trilho"><div class="fill" style="width:85.5%;background:#8db6ec"></div></div></div>
+      <div class="hb"><div class="rot"><span>CBS/IBS · Cenário A</span><b>15,8%</b></div><div class="trilho"><div class="fill" style="width:79%;background:#1e4f9c"></div></div></div>
+      <div class="var"><b>− 1,3 p.p.</b>variação estimada</div>
+      <div class="fonte">Faturamento mensal analisado: R$ 380.000 (fictício). Alíquotas assumidas para 2027 em diante; servem para planejamento, não para apuração.</div>
+    </div>
   </div>
-
-  <h2>Principais pontos de atenção</h2>
-  <table>
-    <tr><th>Problema</th><th>O que significa</th><th style="text-align:right">Itens</th><th>Ação sugerida</th></tr>
-    <tr><td>NCM não vinculada à classificação <span class="tag" style="background:var(--verm)">REG-011</span></td><td>O código de NCM não combina com a classificação tributária informada no cadastro.</td><td class="num">18</td><td>Revisar o cadastro de produtos junto ao cliente.</td></tr>
-    <tr><td>NCM não encontrada <span class="tag" style="background:var(--verm)">REG-002</span></td><td>NCM inexistente ou fora de vigência.</td><td class="num">11</td><td>Corrigir NCM no sistema do cliente.</td></tr>
-    <tr><td>Várias classificações possíveis</td><td>Produtos alimentícios que admitem mais de um enquadramento conforme a operação.</td><td class="num">71</td><td>Definir uma regra por produto; fica salva para as próximas notas.</td></tr>
-  </table>
-
-  <h2>Impacto estimado (simulação)</h2>
-  <table>
-    <tr><th>Indicador (base mensal fictícia)</th><th class="num" style="text-align:right">Valor</th></tr>
-    <tr><td>Faturamento mensal analisado</td><td class="num">R$ 380.000</td></tr>
-    <tr><td>Carga atual estimada (ICMS + PIS + COFINS)</td><td class="num">17,1%</td></tr>
-    <tr><td>Carga estimada CBS/IBS — Cenário A (alíquotas assumidas)</td><td class="num">15,8%</td></tr>
-    <tr><td>Variação estimada</td><td class="num">− 1,3 p.p.</td></tr>
-  </table>
-  <div class="nota">Simulação com alíquotas assumidas para 2027 em diante, que ainda dependem de definição oficial. Serve para planejamento, não para apuração.</div>
-
-  <h2>Plano de ação recomendado</h2>
-  <ol>
-    <li><b>Corrigir os 29 itens bloqueados</b> (NCM inválida ou classificação incompatível) no cadastro do cliente.</li>
-    <li><b>Definir a classificação dos 71 itens pendentes</b>, produto a produto, em uma reunião de 30 minutos.</li>
-    <li><b>Confirmar os 98 itens estimados</b> e salvar a decisão para as notas futuras.</li>
-    <li><b>Verificar com o fornecedor do sistema</b> se a emissão de notas já preenche os campos da reforma.</li>
-    <li><b>Reavaliar em 30 dias</b> com um novo lote de notas.</li>
-  </ol>
 
   <div class="rodape">
-    Preparado por [Nome do Escritório] com apoio da plataforma [Nome do produto]. Resultado de conferência baseado no código aberto publicado pela Receita Federal (aplicação v1.6.1, banco V0059 de 30/09/2026), sem vínculo com o órgão, sem efeito normativo e sem substituir a análise profissional do contador. Valores simulados ficam sujeitos à regulamentação.
+    Preparado por [Nome do Escritório] com apoio da plataforma [Nome do produto]. Base: código aberto publicado pela Receita Federal (aplicação v1.6.1, banco V0059 de 30/09/2026), sem vínculo com o órgão e sem efeito normativo. Não substitui a análise do contador.
   </div>
 </div>
 
 <div class="pagina pagina2" id="dados-acesso">
+  <span class="selo">EXEMPLO · DADOS FICTÍCIOS</span>
   <header>
-    <div class="esc">Transparência sobre os dados</div>
+    <div class="esc">Transparência</div>
     <h1>A quais dados a ferramenta teria acesso?</h1>
-    <div class="sub">O relatório da página anterior é inventado. Se um dia você usar a ferramenta com clientes reais, estes seriam os dados envolvidos.</div>
+    <div class="meta"><span>O relatório anterior é inventado. Estes seriam os dados num uso real.</span></div>
   </header>
 
   <div class="acesso">
     <div class="sim">
       <h3>O que a ferramenta lê</h3>
       <ul>
-        <li><b>Arquivos XML das notas fiscais</b> que você enviar (NF-e, NFC-e, NFS-e).</li>
-        <li>Dos XMLs: data, UF e município da operação, descrição, NCM, unidade e valores dos itens, e os valores de ICMS, PIS e COFINS destacados.</li>
-        <li><b>Cadastro básico do cliente</b>: regime tributário e UF, que você mesmo informa.</li>
-        <li>Suas <b>decisões de classificação</b> por produto, para lembrar nas próximas notas.</li>
+        <li><b>XMLs das notas</b> que você enviar (NF-e, NFC-e, NFS-e)</li>
+        <li>Data, UF e município da operação</li>
+        <li>Descrição, NCM, unidade e valores dos itens</li>
+        <li>ICMS, PIS e COFINS destacados</li>
+        <li>Regime e UF do cliente (você informa)</li>
+        <li>Suas decisões de classificação por produto</li>
       </ul>
     </div>
     <div class="nao">
-      <h3>O que a ferramenta NÃO acessa</h3>
+      <h3>O que NÃO acessa</h3>
       <ul>
-        <li>Seu sistema contábil, seu ERP ou os do cliente (nada é instalado nem conectado).</li>
-        <li>Certificado digital, senhas ou acesso à SEFAZ ou à Receita.</li>
-        <li>Dados bancários, folha de pagamento ou documentos fora das notas.</li>
-        <li>Nenhum dado é vendido ou compartilhado com terceiros.</li>
+        <li>Seu sistema contábil ou ERP</li>
+        <li>Certificado digital e senhas</li>
+        <li>Acesso à SEFAZ ou à Receita</li>
+        <li>Dados bancários ou folha de pagamento</li>
+        <li>Nada é vendido ou compartilhado</li>
       </ul>
     </div>
   </div>
 
-  <h2>Como os dados são tratados</h2>
-  <ol>
-    <li><b>Você escolhe o que envia.</b> Pode anonimizar os XMLs (retirar CNPJ, razão social e endereço) antes de enviar.</li>
-    <li><b>Uso restrito</b> à geração do relatório e ao teste da ferramenta.</li>
-    <li><b>Exclusão a pedido:</b> você pode solicitar a remoção dos arquivos e dos resultados a qualquer momento.</li>
-    <li><b>Termo simples de confidencialidade</b> pode ser assinado antes de qualquer envio, se você preferir.</li>
-    <li>O cálculo usa o <b>código aberto publicado pela Receita Federal</b>, mas esta iniciativa é independente e não tem vínculo com o órgão.</li>
-  </ol>
+  <h2 style="margin-top:14px">Seu controle</h2>
+  <div class="passos">
+    <div><b>1</b>Você escolhe o que envia</div>
+    <div><b>2</b>Pode anonimizar os XMLs</div>
+    <div><b>3</b>Uso só para o relatório</div>
+    <div><b>4</b>Exclusão a pedido</div>
+  </div>
 
-  <p style="margin-top:16px"><a href="index.html" style="color:var(--bordo);font-weight:600">← Voltar ao questionário</a></p>
+  <p style="margin-top:16px;font-size:13px"><a href="index.html" style="color:var(--a2);font-weight:600">← Voltar ao questionário</a></p>
 
   <div class="rodape">
-    Material de exemplo com dados fictícios. Não constitui parecer fiscal nem substitui a análise profissional do contador.
+    Material de exemplo com dados fictícios. Iniciativa independente, sem vínculo com a Receita Federal. Não constitui parecer fiscal.
   </div>
 </div>
 </body>

@@ -60,7 +60,7 @@ function configurarPlanilha() {
   var aba = ss.getSheetByName(NOME_ABA) || ss.insertSheet(NOME_ABA);
   var cab = COLUNAS.map(function (c) { return c[1]; });
   aba.getRange(1, 1, 1, cab.length).setValues([cab])
-    .setFontWeight('bold').setBackground('#7a1f2b').setFontColor('#ffffff')
+    .setFontWeight('bold').setBackground('#1e4f9c').setFontColor('#ffffff')
     .setWrap(true).setVerticalAlignment('middle');
   aba.setFrozenRows(1);
   aba.setFrozenColumns(3);
