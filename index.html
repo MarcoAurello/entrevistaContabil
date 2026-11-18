@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Conversa rápida sobre a Reforma Tributária</title>
+<meta name="description" content="Questionário de 5 minutos para contadores sobre a preparação para a CBS e o IBS.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <span class="selo">Pesquisa com contadores</span>
+    <h1>Como você está se preparando para a CBS e o IBS?</h1>
+    <p class="lead">Leva cerca de <strong>5 minutos</strong>. Não é venda: quero entender a realidade de escritórios pequenos antes de construir qualquer coisa. Suas respostas moldam o que vai existir.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <aside class="caixa-dados" id="dados">
+    <h2>Que dados eu vou ver?</h2>
+    <p>Só o que você escrever aqui. <strong>Nenhum dado de cliente seu é pedido neste questionário.</strong></p>
+    <p>Se mais adiante você topar testar a ideia, o material de exemplo é este relatório <em>fictício</em>, para você ver exatamente o que a ferramenta mostraria:</p>
+    <p><a class="btn btn-sec" href="exemplo-relatorio.html" target="_blank" rel="noopener">Ver o relatório de exemplo (dados fictícios) ↗</a></p>
+    <p class="peq"><a href="exemplo-relatorio.html#dados-acesso" target="_blank" rel="noopener">Ver a lista do que a ferramenta lê e do que nunca acessa ↗</a></p>
+    <ul class="lista">
+      <li>Notas fiscais (XML) só <strong>anonimizadas</strong> ou com autorização do seu cliente, e só se você aceitar.</li>
+      <li>Nada é compartilhado com terceiros. Você pode pedir a exclusão a qualquer momento.</li>
+      <li>Esta é uma pesquisa independente, <strong>sem vínculo com a Receita Federal</strong>.</li>
+    </ul>
+  </aside>
+
+  <div class="progresso" aria-hidden="true"><div id="barra"></div></div>
+  <p class="passo-info" id="passoInfo" aria-live="polite"></p>
+
+  <form id="form" novalidate autocomplete="on">
+
+    <!-- Honeypot anti-robô: pessoas não veem nem preenchem -->
+    <div class="hp" aria-hidden="true">
+      <label>Deixe em branco <input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+    </div>
+
+    <!-- PASSO 1 -->
+    <section class="passo" data-passo="1">
+      <h2>1. Sobre você e seu escritório</h2>
+
+      <div class="campo">
+        <label for="nome">Seu nome <span class="obr">*</span></label>
+        <input id="nome" name="nome" type="text" required autocomplete="name">
+      </div>
+      <div class="campo">
+        <label for="escritorio">Nome do escritório <small>(opcional)</small></label>
+        <input id="escritorio" name="escritorio" type="text" autocomplete="organization">
+      </div>
+      <div class="campo">
+        <label for="contato">WhatsApp ou e-mail para contato <span class="obr">*</span></label>
+        <input id="contato" name="contato" type="text" required autocomplete="off" placeholder="(81) 90000-0000 ou nome@email.com">
+        <small>Só uso para falar sobre esta pesquisa.</small>
+      </div>
+      <div class="campo">
+        <label for="cidade_uf">Cidade / UF</label>
+        <input id="cidade_uf" name="cidade_uf" type="text" placeholder="Recife / PE">
+      </div>
+      <div class="campo">
+        <label for="qtd_clientes">Quantos clientes ativos você atende? <span class="obr">*</span></label>
+        <select id="qtd_clientes" name="qtd_clientes" required>
+          <option value="">Selecione</option>
+          <option>Até 10</option>
+          <option>11 a 40</option>
+          <option>41 a 100</option>
+          <option>Mais de 100</option>
+        </select>
+      </div>
+      <fieldset class="campo">
+        <legend>Em quais regimes seus clientes estão? <span class="obr">*</span> <small>(marque todos)</small></legend>
+        <label class="op"><input type="checkbox" name="regimes" value="Simples Nacional"> Simples Nacional</label>
+        <label class="op"><input type="checkbox" name="regimes" value="Lucro Presumido"> Lucro Presumido</label>
+        <label class="op"><input type="checkbox" name="regimes" value="Lucro Real"> Lucro Real</label>
+        <label class="op"><input type="checkbox" name="regimes" value="MEI"> MEI</label>
+      </fieldset>
+      <div class="campo">
+        <label for="sistema">Que sistema você usa para a contabilidade / fiscal?</label>
+        <input id="sistema" name="sistema" type="text" placeholder="Ex.: Domínio, Alterdata, Questor, planilhas...">
+      </div>
+      <div class="campo">
+        <label for="origem_xml">De onde vêm os XMLs das notas dos seus clientes?</label>
+        <select id="origem_xml" name="origem_xml">
+          <option value="">Selecione</option>
+          <option>O cliente me envia</option>
+          <option>Baixo do portal da SEFAZ / prefeitura</option>
+          <option>Provedor de download de notas</option>
+          <option>Direto do sistema do cliente (integração)</option>
+          <option>Não trabalho com XML hoje</option>
+          <option>Outro</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- PASSO 2 -->
+    <section class="passo" data-passo="2" hidden>
+      <h2>2. Como está a preparação</h2>
+
+      <fieldset class="campo">
+        <legend>Qual a urgência da reforma para o seu escritório hoje? <span class="obr">*</span></legend>
+        <div class="escala" role="radiogroup">
+          <label><input type="radio" name="urgencia" value="1"><span>1</span></label>
+          <label><input type="radio" name="urgencia" value="2"><span>2</span></label>
+          <label><input type="radio" name="urgencia" value="3"><span>3</span></label>
+          <label><input type="radio" name="urgencia" value="4"><span>4</span></label>
+          <label><input type="radio" name="urgencia" value="5"><span>5</span></label>
+        </div>
+        <div class="escala-leg"><span>1 = ainda é cedo</span><span>5 = já tenho cliente cobrando</span></div>
+      </fieldset>
+
+      <div class="campo">
+        <label for="ja_fez">O que você já fez para se preparar?</label>
+        <textarea id="ja_fez" name="ja_fez" rows="3" placeholder="Cursos, testes, reuniões com clientes, nada ainda..."></textarea>
+      </div>
+
+      <fieldset class="campo">
+        <legend>O que mais te preocupa? <small>(marque até 3)</small></legend>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Cadastro de produtos (NCM, classificação)"> Cadastro de produtos (NCM, classificação)</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Emissão das notas no sistema do cliente"> Emissão das notas no sistema do cliente</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Créditos de CBS/IBS"> Créditos de CBS/IBS</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Impacto no preço e na carga do cliente"> Impacto no preço e na carga do cliente</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Mudança constante das regras"> Mudança constante das regras</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Tempo da minha equipe"> Tempo da minha equipe</label>
+        <label class="op"><input type="checkbox" name="preocupacoes" value="Outro"> Outro</label>
+      </fieldset>
+
+      <fieldset class="campo">
+        <legend>Algum cliente já perguntou o que muda para ele?</legend>
+        <label class="op"><input type="radio" name="clientes_perguntaram" value="Sim, vários"> Sim, vários</label>
+        <label class="op"><input type="radio" name="clientes_perguntaram" value="Alguns"> Alguns</label>
+        <label class="op"><input type="radio" name="clientes_perguntaram" value="Nenhum ainda"> Nenhum ainda</label>
+      </fieldset>
+
+      <fieldset class="campo">
+        <legend>Você já usou o simulador/calculadora da Receita Federal?</legend>
+        <label class="op"><input type="radio" name="usou_simulador" value="Sim"> Sim</label>
+        <label class="op"><input type="radio" name="usou_simulador" value="Não"> Não</label>
+      </fieldset>
+      <div class="campo">
+        <label for="simulador_opiniao">Se sim: o que achou? Resolve para você?</label>
+        <textarea id="simulador_opiniao" name="simulador_opiniao" rows="2"></textarea>
+      </div>
+    </section>
+
+    <!-- PASSO 3 -->
+    <section class="passo" data-passo="3" hidden>
+      <h2>3. Uma ideia para você avaliar</h2>
+      <div class="ideia">
+        <p>Imagine uma ferramenta em que você <strong>sobe as notas dos seus clientes</strong> e ela mostra, por cliente: quais cadastros de produto estão com problema, o que precisa ser corrigido e o impacto estimado da reforma. O resultado sai em um <strong>relatório com a marca do seu escritório</strong>, que você pode entregar ao cliente.</p>
+        <p><a class="btn btn-sec" href="exemplo-relatorio.html" target="_blank" rel="noopener">Abrir o relatório de exemplo (dados fictícios) ↗</a></p>
+        <p class="peq">Os números do exemplo são inventados, só para mostrar o formato.</p>
+      </div>
+
+      <fieldset class="campo">
+        <legend>Depois de ver o exemplo: o quanto isso seria útil na sua rotina? <span class="obr">*</span></legend>
+        <div class="escala" role="radiogroup">
+          <label><input type="radio" name="reacao_relatorio" value="1"><span>1</span></label>
+          <label><input type="radio" name="reacao_relatorio" value="2"><span>2</span></label>
+          <label><input type="radio" name="reacao_relatorio" value="3"><span>3</span></label>
+          <label><input type="radio" name="reacao_relatorio" value="4"><span>4</span></label>
+          <label><input type="radio" name="reacao_relatorio" value="5"><span>5</span></label>
+        </div>
+        <div class="escala-leg"><span>1 = indiferente</span><span>5 = quero isso agora</span></div>
+      </fieldset>
+
+      <div class="campo">
+        <label for="utilidade_relatorio">O que você faria com um relatório assim? O que faltou nele?</label>
+        <textarea id="utilidade_relatorio" name="utilidade_relatorio" rows="3"></textarea>
+      </div>
+
+      <fieldset class="campo">
+        <legend>Você pretende cobrar dos clientes por um trabalho de adaptação à reforma?</legend>
+        <label class="op"><input type="radio" name="cobrar_consultoria" value="Sim"> Sim</label>
+        <label class="op"><input type="radio" name="cobrar_consultoria" value="Talvez"> Talvez</label>
+        <label class="op"><input type="radio" name="cobrar_consultoria" value="Não"> Não, faz parte do serviço atual</label>
+      </fieldset>
+    </section>
+
+    <!-- PASSO 4 -->
+    <section class="passo" data-passo="4" hidden>
+      <h2>4. Valor</h2>
+      <p class="apoio">Ainda não existe preço definido. Sua resposta sincera é o que vai defini-lo.</p>
+
+      <fieldset class="campo">
+        <legend>Por uma ferramenta assim, que faixa mensal faria sentido para o seu escritório? <span class="obr">*</span></legend>
+        <label class="op"><input type="radio" name="preco_faz_sentido" value="Até R$ 99"> Até R$ 99</label>
+        <label class="op"><input type="radio" name="preco_faz_sentido" value="R$ 100 a R$ 250"> R$ 100 a R$ 250</label>
+        <label class="op"><input type="radio" name="preco_faz_sentido" value="R$ 251 a R$ 450"> R$ 251 a R$ 450</label>
+        <label class="op"><input type="radio" name="preco_faz_sentido" value="Acima de R$ 450"> Acima de R$ 450</label>
+        <label class="op"><input type="radio" name="preco_faz_sentido" value="Não pagaria"> Não pagaria por isso</label>
+      </fieldset>
+
+      <div class="campo">
+        <label for="preco_caro">A partir de que valor mensal ficaria caro demais? <small>(em R$)</small></label>
+        <input id="preco_caro" name="preco_caro" type="text" inputmode="numeric" placeholder="Ex.: 300">
+      </div>
+
+      <fieldset class="campo">
+        <legend>Se estivesse pronta hoje, você assinaria? <span class="obr">*</span></legend>
+        <label class="op"><input type="radio" name="assinaria" value="Sim"> Sim</label>
+        <label class="op"><input type="radio" name="assinaria" value="Talvez"> Talvez</label>
+        <label class="op"><input type="radio" name="assinaria" value="Não"> Não</label>
+      </fieldset>
+    </section>
+
+    <!-- PASSO 5 -->
+    <section class="passo" data-passo="5" hidden>
+      <h2>5. Próximos passos</h2>
+
+      <fieldset class="campo">
+        <legend>Você toparia ser um dos primeiros a testar, com acesso antecipado e preço de fundador? <span class="obr">*</span></legend>
+        <label class="op"><input type="radio" name="aceita_piloto" value="Sim"> Sim</label>
+        <label class="op"><input type="radio" name="aceita_piloto" value="Talvez"> Talvez, quero saber mais</label>
+        <label class="op"><input type="radio" name="aceita_piloto" value="Não"> Não por enquanto</label>
+      </fieldset>
+
+      <fieldset class="campo">
+        <legend>Aceitaria enviar algumas notas (XML) de um cliente para um diagnóstico gratuito?</legend>
+        <label class="op"><input type="radio" name="aceita_enviar_xml" value="Sim, anonimizadas"> Sim, anonimizadas (sem CNPJ e nomes)</label>
+        <label class="op"><input type="radio" name="aceita_enviar_xml" value="Sim, com termo"> Sim, com um termo de confidencialidade</label>
+        <label class="op"><input type="radio" name="aceita_enviar_xml" value="Não"> Não</label>
+      </fieldset>
+
+      <div class="campo">
+        <label for="melhor_horario">Melhor dia e horário para uma conversa de 15 minutos, se quiser</label>
+        <input id="melhor_horario" name="melhor_horario" type="text" placeholder="Ex.: terça à tarde">
+      </div>
+
+      <div class="campo">
+        <label for="comentarios">Algo mais que eu deveria saber?</label>
+        <textarea id="comentarios" name="comentarios" rows="3"></textarea>
+      </div>
+
+      <div class="campo consent">
+        <label class="op">
+          <input type="checkbox" id="consentimento" name="consentimento" value="Sim" required>
+          <span>Concordo em ter minhas respostas e meu contato guardados para esta pesquisa, conforme a LGPD. Posso pedir a exclusão quando quiser. <span class="obr">*</span></span>
+        </label>
+      </div>
+    </section>
+
+    <p class="erro" id="erro" role="alert" hidden></p>
+
+    <div class="nav">
+      <button type="button" class="btn btn-sec" id="voltar" hidden>← Voltar</button>
+      <button type="button" class="btn" id="avancar">Continuar →</button>
+      <button type="submit" class="btn" id="enviar" hidden>Enviar respostas</button>
+    </div>
+  </form>
+
+  <section class="obrigado" id="obrigado" hidden>
+    <div class="check">✓</div>
+    <h2>Obrigado!</h2>
+    <p>Suas respostas foram registradas. Vou ler com atenção e, se você deixou contato, retorno em breve.</p>
+    <p><a class="btn btn-sec" href="exemplo-relatorio.html" target="_blank" rel="noopener">Rever o relatório de exemplo ↗</a></p>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    Pesquisa independente. Sem vínculo com a Receita Federal ou qualquer órgão público. Os dados são usados apenas para esta pesquisa.
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

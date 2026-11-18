@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relatório de Prontidão — Exemplo</title>
+<style>
+  :root { --bordo:#7a1f2b; --cinza:#555; --claro:#f6f1f2; --ok:#2e7d4f; --amarelo:#b7791f; --laranja:#c05621; --verm:#b83232; }
+  * { box-sizing: border-box; }
+  body { font-family: Segoe UI, Arial, sans-serif; color:#222; margin:0; background:#eee; }
+  .pagina { width:210mm; min-height:297mm; margin:12px auto; background:#fff; padding:14mm 15mm; position:relative; }
+  .marca-dagua { position:absolute; top:6mm; right:15mm; font-size:11px; color:#fff; background:var(--verm); padding:3px 10px; border-radius:3px; letter-spacing:.5px; }
+  header { border-bottom:3px solid var(--bordo); padding-bottom:8px; margin-bottom:12px; }
+  header .esc { font-size:12px; color:var(--cinza); }
+  h1 { margin:2px 0 0; font-size:21px; color:var(--bordo); }
+  .sub { font-size:12px; color:var(--cinza); margin-top:4px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--bordo); margin:16px 0 6px; border-bottom:1px solid #ddd; padding-bottom:3px; }
+  .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .card { background:var(--claro); border-radius:6px; padding:8px 10px; }
+  .card .n { font-size:21px; font-weight:700; color:var(--bordo); }
+  .card .l { font-size:11px; color:var(--cinza); }
+  .barra { display:flex; height:22px; border-radius:4px; overflow:hidden; margin:6px 0 4px; }
+  .barra div { color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; }
+  .leg { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:11px; color:var(--cinza); }
+  .leg i { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:4px; vertical-align:middle; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { text-align:left; background:var(--claro); padding:5px 7px; font-size:11px; }
+  td { padding:5px 7px; border-bottom:1px solid #eee; vertical-align:top; }
+  td.num { text-align:right; white-space:nowrap; }
+  .tag { font-size:10px; padding:1px 6px; border-radius:8px; color:#fff; white-space:nowrap; }
+  .nota { font-size:11px; color:var(--cinza); margin-top:4px; }
+  ol { margin:4px 0 0 18px; padding:0; font-size:12px; }
+  ol li { margin-bottom:4px; }
+  .rodape { position:absolute; left:15mm; right:15mm; bottom:10mm; font-size:9.5px; color:#777; border-top:1px solid #ddd; padding-top:6px; line-height:1.4; }
+  .nav-topo { max-width:210mm; margin:12px auto 0; padding:0 4px; font-size:13px; }
+  .nav-topo a { color:var(--bordo); font-weight:600; }
+  .pagina2 { min-height:auto; padding-bottom:22mm; }
+  .pagina2 h1 { font-size:19px; }
+  .acesso { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
+  .acesso > div { background:var(--claro); border-radius:6px; padding:10px 12px; font-size:12.5px; }
+  .acesso h3 { margin:0 0 6px; font-size:13px; color:var(--bordo); }
+  .acesso ul { margin:0; padding-left:18px; }
+  .acesso li { margin-bottom:3px; }
+  .nao { border-left:4px solid var(--verm); }
+  .sim { border-left:4px solid var(--ok); }
+  @media (max-width:800px) { .acesso { grid-template-columns:1fr; } }
+  @media print { .nav-topo { display:none; } }
+  @media print { body { background:#fff; } .pagina { margin:0; box-shadow:none; } @page { size:A4; margin:0; } }
+  @media (max-width:800px) { .pagina { width:auto; padding:14px; } .cards { grid-template-columns:repeat(2,1fr); } .rodape { position:static; margin-top:16px; } }
+</style>
+</head>
+<body>
+<div class="nav-topo"><a href="index.html">← Voltar ao questionário</a></div>
+<div class="pagina">
+  <div class="marca-dagua">EXEMPLO — DADOS FICTÍCIOS</div>
+  <header>
+    <div class="esc">[Nome do Escritório Contábil] · [logo do escritório]</div>
+    <h1>Diagnóstico de Prontidão para a Reforma Tributária</h1>
+    <div class="sub"><b>Cliente:</b> Mercadinho Exemplo Ltda (fictício) · <b>Regime:</b> Lucro Presumido · <b>UF:</b> RS · <b>Período analisado:</b> set–out/2026 · <b>Emissão:</b> 18/11/2026</div>
+  </header>
+
+  <h2>Visão geral</h2>
+  <div class="cards">
+    <div class="card"><div class="n">120</div><div class="l">notas fiscais analisadas</div></div>
+    <div class="card"><div class="n">412</div><div class="l">itens verificados</div></div>
+    <div class="card"><div class="n">87</div><div class="l">produtos diferentes</div></div>
+    <div class="card"><div class="n">52%</div><div class="l">itens com classificação conferida</div></div>
+  </div>
+
+  <h2>Situação da classificação dos itens</h2>
+  <div class="barra">
+    <div style="width:52%;background:var(--ok)">52%</div>
+    <div style="width:24%;background:var(--amarelo)">24%</div>
+    <div style="width:17%;background:var(--laranja)">17%</div>
+    <div style="width:7%;background:var(--verm)">7%</div>
+  </div>
+  <div class="leg">
+    <span><i style="background:var(--ok)"></i>Conferido (214)</span>
+    <span><i style="background:var(--amarelo)"></i>Estimado, confirmar (98)</span>
+    <span><i style="background:var(--laranja)"></i>Pendente de decisão (71)</span>
+    <span><i style="background:var(--verm)"></i>Corrigir cadastro (29)</span>
+  </div>
+
+  <h2>Principais pontos de atenção</h2>
+  <table>
+    <tr><th>Problema</th><th>O que significa</th><th style="text-align:right">Itens</th><th>Ação sugerida</th></tr>
+    <tr><td>NCM não vinculada à classificação <span class="tag" style="background:var(--verm)">REG-011</span></td><td>O código de NCM não combina com a classificação tributária informada no cadastro.</td><td class="num">18</td><td>Revisar o cadastro de produtos junto ao cliente.</td></tr>
+    <tr><td>NCM não encontrada <span class="tag" style="background:var(--verm)">REG-002</span></td><td>NCM inexistente ou fora de vigência.</td><td class="num">11</td><td>Corrigir NCM no sistema do cliente.</td></tr>
+    <tr><td>Várias classificações possíveis</td><td>Produtos alimentícios que admitem mais de um enquadramento conforme a operação.</td><td class="num">71</td><td>Definir uma regra por produto; fica salva para as próximas notas.</td></tr>
+  </table>
+
+  <h2>Impacto estimado (simulação)</h2>
+  <table>
+    <tr><th>Indicador (base mensal fictícia)</th><th class="num" style="text-align:right">Valor</th></tr>
+    <tr><td>Faturamento mensal analisado</td><td class="num">R$ 380.000</td></tr>
+    <tr><td>Carga atual estimada (ICMS + PIS + COFINS)</td><td class="num">17,1%</td></tr>
+    <tr><td>Carga estimada CBS/IBS — Cenário A (alíquotas assumidas)</td><td class="num">15,8%</td></tr>
+    <tr><td>Variação estimada</td><td class="num">− 1,3 p.p.</td></tr>
+  </table>
+  <div class="nota">Simulação com alíquotas assumidas para 2027 em diante, que ainda dependem de definição oficial. Serve para planejamento, não para apuração.</div>
+
+  <h2>Plano de ação recomendado</h2>
+  <ol>
+    <li><b>Corrigir os 29 itens bloqueados</b> (NCM inválida ou classificação incompatível) no cadastro do cliente.</li>
+    <li><b>Definir a classificação dos 71 itens pendentes</b>, produto a produto, em uma reunião de 30 minutos.</li>
+    <li><b>Confirmar os 98 itens estimados</b> e salvar a decisão para as notas futuras.</li>
+    <li><b>Verificar com o fornecedor do sistema</b> se a emissão de notas já preenche os campos da reforma.</li>
+    <li><b>Reavaliar em 30 dias</b> com um novo lote de notas.</li>
+  </ol>
+
+  <div class="rodape">
+    Preparado por [Nome do Escritório] com apoio da plataforma [Nome do produto]. Resultado de conferência baseado no código aberto publicado pela Receita Federal (aplicação v1.6.1, banco V0059 de 30/09/2026), sem vínculo com o órgão, sem efeito normativo e sem substituir a análise profissional do contador. Valores simulados ficam sujeitos à regulamentação.
+  </div>
+</div>
+
+<div class="pagina pagina2" id="dados-acesso">
+  <header>
+    <div class="esc">Transparência sobre os dados</div>
+    <h1>A quais dados a ferramenta teria acesso?</h1>
+    <div class="sub">O relatório da página anterior é inventado. Se um dia você usar a ferramenta com clientes reais, estes seriam os dados envolvidos.</div>
+  </header>
+
+  <div class="acesso">
+    <div class="sim">
+      <h3>O que a ferramenta lê</h3>
+      <ul>
+        <li><b>Arquivos XML das notas fiscais</b> que você enviar (NF-e, NFC-e, NFS-e).</li>
+        <li>Dos XMLs: data, UF e município da operação, descrição, NCM, unidade e valores dos itens, e os valores de ICMS, PIS e COFINS destacados.</li>
+        <li><b>Cadastro básico do cliente</b>: regime tributário e UF, que você mesmo informa.</li>
+        <li>Suas <b>decisões de classificação</b> por produto, para lembrar nas próximas notas.</li>
+      </ul>
+    </div>
+    <div class="nao">
+      <h3>O que a ferramenta NÃO acessa</h3>
+      <ul>
+        <li>Seu sistema contábil, seu ERP ou os do cliente (nada é instalado nem conectado).</li>
+        <li>Certificado digital, senhas ou acesso à SEFAZ ou à Receita.</li>
+        <li>Dados bancários, folha de pagamento ou documentos fora das notas.</li>
+        <li>Nenhum dado é vendido ou compartilhado com terceiros.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Como os dados são tratados</h2>
+  <ol>
+    <li><b>Você escolhe o que envia.</b> Pode anonimizar os XMLs (retirar CNPJ, razão social e endereço) antes de enviar.</li>
+    <li><b>Uso restrito</b> à geração do relatório e ao teste da ferramenta.</li>
+    <li><b>Exclusão a pedido:</b> você pode solicitar a remoção dos arquivos e dos resultados a qualquer momento.</li>
+    <li><b>Termo simples de confidencialidade</b> pode ser assinado antes de qualquer envio, se você preferir.</li>
+    <li>O cálculo usa o <b>código aberto publicado pela Receita Federal</b>, mas esta iniciativa é independente e não tem vínculo com o órgão.</li>
+  </ol>
+
+  <p style="margin-top:16px"><a href="index.html" style="color:var(--bordo);font-weight:600">← Voltar ao questionário</a></p>
+
+  <div class="rodape">
+    Material de exemplo com dados fictícios. Não constitui parecer fiscal nem substitui a análise profissional do contador.
+  </div>
+</div>
+</body>
+</html>
